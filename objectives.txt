@@ -1,0 +1,43 @@
+Requirements
+Mandatory
+
+The following features are mandatory:
+[x] the window can be closed using events,
+[x] the game manages the input from the mouse click and keyboard,
+[x] animations in your program are frame rate independent.
+
+If your project is missing one of them, it will not be evaluated further!
+
+Must
+
+[] The map must be displayed using a 3D projection (isometric, parallel or any other projection),
+[] the map must have textures,
+[] the tiles must be selected using the mouse,
+[] at least 3 effects (including the modification of altitude) must be implemented and selectable with
+   a toolbar in the window (reinitialization of the tiles altitudes, modification of the size of the area of
+   effect, etc).
+
+Should
+
+[x] Your window should stick between 800x600 pixels and 1920x1080 pixels,
+[] the size of the map should be selected using editable textboxes in the window,
+[] help boxes should appear as the mouse hovers elements in the toolbar(s),
+[] the buttons should have at least 3 visual states : idle, hover, and clicked,
+[] the map should have additional layer (water, lava etc...),
+[] tiles should have a texture,
+[] the format of saved maps should be in a .legend file,
+[] moving around on the map should be done with arrow keys,
+[] zooming up and down should be done with keyboard and/or the mouse scrolling button.
+
+Could
+
+[] the program could save the map in a file at runtime using buttons and tools,
+[] the program could load a map at runtime using buttons and tools,
+[] the name of the saved files could be chosen at runtime,
+[/] the camera could turn around any axis,
+[] The layers could be animated,
+[] tools could be selected using keyboard shortcuts,
+[] sounds could be played on user actions,
+[] textures of the tiles could change depending on the direction of their slope,
+[o] elements (e.g. buildings, roads) could be added on the map in compliance with the landforms,
+[] water/lava areas could be added.

@@ -1,5 +1,5 @@
 /*
-** EPITECH PROJECT, 2025
+** EPITECH PROJECT, 2026
 ** resources_load_texture
 ** File description:
 ** Load a texture in the resources

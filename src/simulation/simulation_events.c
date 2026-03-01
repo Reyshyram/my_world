@@ -1,5 +1,5 @@
 /*
-** EPITECH PROJECT, 2025
+** EPITECH PROJECT, 2026
 ** simulation_events.c
 ** File description:
 ** Handle events during the simulation

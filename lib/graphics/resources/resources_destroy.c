@@ -1,5 +1,5 @@
 /*
-** EPITECH PROJECT, 2025
+** EPITECH PROJECT, 2026
 ** resources_destroy.c
 ** File description:
 ** Cleanup the resources

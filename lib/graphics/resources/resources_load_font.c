@@ -1,5 +1,5 @@
 /*
-** EPITECH PROJECT, 2025
+** EPITECH PROJECT, 2026
 ** resources_load_font
 ** File description:
 ** Load a font in the resources

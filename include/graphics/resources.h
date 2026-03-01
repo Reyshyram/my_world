@@ -1,5 +1,5 @@
 /*
-** EPITECH PROJECT, 2025
+** EPITECH PROJECT, 2026
 ** resources.h
 ** File description:
 ** Header file for the game engine resources

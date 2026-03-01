@@ -1,5 +1,5 @@
 /*
-** EPITECH PROJECT, 2025
+** EPITECH PROJECT, 2026
 ** simulation_update.c
 ** File description:
 ** Update the simulation

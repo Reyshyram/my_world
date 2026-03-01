@@ -1,5 +1,5 @@
 /*
-** EPITECH PROJECT, 2025
+** EPITECH PROJECT, 2026
 ** interpolation.c
 ** File description:
 ** Interpolation function for the engine

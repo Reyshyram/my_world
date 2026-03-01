@@ -1,5 +1,5 @@
 /*
-** EPITECH PROJECT, 2025
+** EPITECH PROJECT, 2026
 ** sprite_anim.h
 ** File description:
 ** Header for sprite animations

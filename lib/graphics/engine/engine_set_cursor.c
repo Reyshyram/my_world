@@ -1,5 +1,5 @@
 /*
-** EPITECH PROJECT, 2025
+** EPITECH PROJECT, 2026
 ** engine_set_cursor.c
 ** File description:
 ** Set the cursor for the game engine

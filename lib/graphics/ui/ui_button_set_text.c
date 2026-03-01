@@ -1,5 +1,5 @@
 /*
-** EPITECH PROJECT, 2025
+** EPITECH PROJECT, 2026
 ** ui_button_set_text.c
 ** File description:
 ** Set the text of an UI button

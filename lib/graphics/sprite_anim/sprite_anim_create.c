@@ -1,5 +1,5 @@
 /*
-** EPITECH PROJECT, 2025
+** EPITECH PROJECT, 2026
 ** sprite_anim_create.c
 ** File description:
 ** Create an animated sprite struct

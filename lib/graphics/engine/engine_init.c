@@ -1,5 +1,5 @@
 /*
-** EPITECH PROJECT, 2025
+** EPITECH PROJECT, 2026
 ** engine_init.c
 ** File description:
 ** Initialize the game engine

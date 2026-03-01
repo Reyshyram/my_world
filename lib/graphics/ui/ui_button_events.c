@@ -1,5 +1,5 @@
 /*
-** EPITECH PROJECT, 2025
+** EPITECH PROJECT, 2026
 ** ui_buttons_events.c
 ** File description:
 ** Handle ui button events

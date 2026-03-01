@@ -1,5 +1,5 @@
 /*
-** EPITECH PROJECT, 2025
+** EPITECH PROJECT, 2026
 ** engine_destroy.c
 ** File description:
 ** Free the memory used by the engine

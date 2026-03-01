@@ -1,5 +1,5 @@
 /*
-** EPITECH PROJECT, 2025
+** EPITECH PROJECT, 2026
 ** ui_button_update.c
 ** File description:
 ** Update an UI button

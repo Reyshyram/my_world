@@ -1,5 +1,5 @@
 /*
-** EPITECH PROJECT, 2025
+** EPITECH PROJECT, 2026
 ** ui_button_destroy
 ** File description:
 ** Destroy an UI button

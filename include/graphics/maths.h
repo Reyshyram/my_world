@@ -1,5 +1,5 @@
 /*
-** EPITECH PROJECT, 2025
+** EPITECH PROJECT, 2026
 ** graphics/maths.h
 ** File description:
 ** Maths for the engine

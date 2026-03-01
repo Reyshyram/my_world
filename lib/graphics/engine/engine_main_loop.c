@@ -1,5 +1,5 @@
 /*
-** EPITECH PROJECT, 2025
+** EPITECH PROJECT, 2026
 ** engine_main_loop.c
 ** File description:
 ** Main loop for the engine

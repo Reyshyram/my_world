@@ -1,5 +1,5 @@
 /*
-** EPITECH PROJECT, 2025
+** EPITECH PROJECT, 2026
 ** is_graphical.c
 ** File description:
 ** Check if the environment has graphical support

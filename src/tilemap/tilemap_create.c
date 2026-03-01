@@ -51,5 +51,6 @@ tilemap_t *tilemap_create(size_t width, size_t height, sfVector2u *window_size)
         tilemap_destroy(tilemap);
         return nullptr;
     }
+    tilemap_calculate_vertices(tilemap);
     return tilemap;
 }

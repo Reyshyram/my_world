@@ -1,5 +1,5 @@
 ##
-## EPITECH PROJECT, 2025
+## EPITECH PROJECT, 2026
 ## Makefile
 ## File description:
 ## Makefile used to compile the project, as well as the libraries in lib/
@@ -40,7 +40,7 @@ _COVERAGE_FLAGS	:= --coverage
 COVERAGE_FLAGS	:=
 LDFLAGS			:= -L$(LIB_DIR)
 # Automatically link all libs in the lib/ folder
-LDLIBS			:= $(foreach lib,$(LIB_NAMES),-l$(lib)) -lcsfml-graphics -lcsfml-window -lcsfml-system -lcsfml-audio
+LDLIBS			:= $(foreach lib,$(LIB_NAMES),-l$(lib)) -lcsfml-graphics -lcsfml-window -lcsfml-system -lcsfml-audio -lm
 AR				:= ar
 ARFLAGS			:= rc
 

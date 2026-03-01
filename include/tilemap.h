@@ -77,6 +77,16 @@ tilemap_t *tilemap_create(size_t width, size_t height,
     sfVector2u *window_size);
 void tilemap_destroy(tilemap_t *tilemap);
 
+draw_order_t *get_draw_order(const tilemap_t *tilemap,
+    const sfVector2f *view_dir);
+sfVector2f project_point(const tilemap_t *tilemap, size_t x, size_t y,
+    size_t z);
+void add_tile_side(sfVertexArray *vertex_array, const sfVector2f corners[4],
+    const sfColor *color);
+void add_visible_walls(const tilemap_t *tilemap, tile_render_t *tile_render,
+    const draw_order_t *tile, const sfVector2f *view_dir);
+void tilemap_calculate_vertices(tilemap_t *tilemap);
+
 void tilemap_draw(const tilemap_t *tilemap, sfRenderWindow *window);
 
 #endif /* !TILEMAP_H_ */

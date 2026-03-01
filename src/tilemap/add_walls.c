@@ -46,19 +46,21 @@ static void add_wall_if_visible(tile_render_t *tile_render, corner_t corner_a,
 
     if (tile_render->neighbor_height >= tile_render->tile_height)
         return;
-    corners[0] = tile_render->corners[corner_a];
-    corners[1] = tile_render->corners[corner_b];
-    corners[2] = (sfVector2f) {corners[1].x, corners[1].y + wall_height};
-    corners[3] = (sfVector2f) {corners[0].x, corners[0].y + wall_height};
+    corners[CORNER_TOP_LEFT] = tile_render->corners[corner_a];
+    corners[CORNER_TOP_RIGHT] = tile_render->corners[corner_b];
+    corners[CORNER_BOTTOM_RIGHT] = (sfVector2f) {corners[CORNER_TOP_RIGHT].x,
+        corners[CORNER_TOP_RIGHT].y + wall_height};
+    corners[CORNER_BOTTOM_LEFT] = (sfVector2f) {corners[CORNER_TOP_LEFT].x,
+        corners[CORNER_TOP_LEFT].y + wall_height};
     add_tile_side(tile_render->vertices, corners, color);
 }
 
 void add_visible_walls(const tilemap_t *tilemap, tile_render_t *tile_render,
     const draw_order_t *tile, const sfVector2f *view_dir)
 {
-    const int x_corners[2][2] = {{CORNER_BOTTOM_LEFT, CORNER_TOP_LEFT},
+    const corner_t x_corners[2][2] = {{CORNER_BOTTOM_LEFT, CORNER_TOP_LEFT},
         {CORNER_TOP_RIGHT, CORNER_BOTTOM_RIGHT}};
-    const int y_corners[2][2] = {{CORNER_TOP_LEFT, CORNER_TOP_RIGHT},
+    const corner_t y_corners[2][2] = {{CORNER_TOP_LEFT, CORNER_TOP_RIGHT},
         {CORNER_BOTTOM_RIGHT, CORNER_BOTTOM_LEFT}};
     tile_type_t wall_type = get_wall_type(tile_render->tile_type);
     sfColor x_color = darken_color(&TILE_COLORS[wall_type], X_AXIS_DARKEN);

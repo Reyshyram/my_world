@@ -1,5 +1,5 @@
 /*
-** EPITECH PROJECT, 2025
+** EPITECH PROJECT, 2026
 ** main
 ** File description:
 ** Main file for the program
@@ -8,6 +8,8 @@
 #include <SFML/Graphics/RenderWindow.h>
 #include <SFML/Window/VideoMode.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
 #include "graphics/engine.h"
 
@@ -23,6 +25,7 @@ static void run_game(engine_t *engine)
         return;
     }
     sfRenderWindow_setFramerateLimit(engine->window, FPS);
+    srand(time(nullptr));
     engine_set_scene(engine, simulation_scene, false);
     engine_main_loop(engine);
     engine_destroy(engine);

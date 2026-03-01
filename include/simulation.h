@@ -1,5 +1,5 @@
 /*
-** EPITECH PROJECT, 2025
+** EPITECH PROJECT, 2026
 ** simulation.h
 ** File description:
 ** Simulation scene
@@ -13,10 +13,11 @@
     #include <SFML/System/Vector2.h>
 
     #include "graphics/engine.h"
+    #include "tilemap.h"
 // clang-format on
 
 typedef struct {
-
+    tilemap_t *tilemap;
 } simulation_data_t;
 
 scene_t *simulation_create(void);

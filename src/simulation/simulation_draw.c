@@ -1,5 +1,5 @@
 /*
-** EPITECH PROJECT, 2025
+** EPITECH PROJECT, 2026
 ** simulation_draw.c
 ** File description:
 ** Draw the simulation scene
@@ -8,6 +8,7 @@
 #include "graphics/engine.h"
 
 #include "simulation.h"
+#include "tilemap.h"
 
 void simulation_draw(engine_t *engine)
 {
@@ -15,4 +16,6 @@ void simulation_draw(engine_t *engine)
 
     if (!data)
         return;
+    if (data->tilemap)
+        tilemap_draw(data->tilemap, engine->window);
 }

@@ -1,5 +1,5 @@
 /*
-** EPITECH PROJECT, 2025
+** EPITECH PROJECT, 2026
 ** simulation_enter.c
 ** File description:
 ** Initialize the simulation scene
@@ -8,6 +8,7 @@
 #include "graphics/engine.h"
 
 #include "simulation.h"
+#include "tilemap.h"
 
 void simulation_enter(engine_t *engine)
 {
@@ -15,4 +16,6 @@ void simulation_enter(engine_t *engine)
 
     if (!data)
         return;
+    data->tilemap =
+        tilemap_create(MAP_DEFAULT_W, MAP_DEFAULT_H, &engine->window_size);
 }

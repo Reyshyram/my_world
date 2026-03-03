@@ -24,6 +24,10 @@
 
     #define X_AXIS_DARKEN 0.5
     #define Y_AXIS_DARKEN 0.7
+
+    #define CAMERA_SPEED 500
+    #define ROTATION_SPEED 1
+    #define ZOOM_SPEED 0.5F
 // clang-format on
 
 typedef enum tile_type {

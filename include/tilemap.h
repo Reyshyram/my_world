@@ -17,10 +17,10 @@
     #define TILE_H_WIDTH 24
     #define TILE_H_LENGTH 12
     #define TILE_HEIGHT 24
-    #define MAP_DEFAULT_W 22
-    #define MAP_DEFAULT_H 22
+    #define MAP_DEFAULT_W 128
+    #define MAP_DEFAULT_H 128
     #define MIN_HEIGHT 1
-    #define MAX_HEIGHT 8
+    #define MAX_HEIGHT 64
 
     #define X_AXIS_DARKEN 0.5
     #define Y_AXIS_DARKEN 0.7
@@ -91,5 +91,7 @@ void add_visible_walls(const tilemap_t *tilemap, tile_render_t *tile_render,
 void tilemap_calculate_vertices(tilemap_t *tilemap);
 
 void tilemap_draw(const tilemap_t *tilemap, sfRenderWindow *window);
+void randomize_tile_map(tilemap_t *map);
+tile_type_t get_tile_type(int height);
 
 #endif /* !TILEMAP_H_ */

@@ -55,7 +55,6 @@ typedef struct tilemap {
     tile_type_t *types;
     sfVertexArray *vertices;
     sfView *view;
-    sfVector2f view_offset;
     float rotation_rad;
 } tilemap_t;
 

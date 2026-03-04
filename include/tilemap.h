@@ -92,6 +92,7 @@ typedef struct {
 tilemap_t *tilemap_create(size_t width, size_t height,
     sfVector2u *window_size);
 void tilemap_destroy(tilemap_t *tilemap);
+void init_tile_data(tilemap_t *tilemap, size_t nb_tiles);
 
 draw_order_t *get_draw_order(const tilemap_t *tilemap,
     const sfVector2f *view_dir);

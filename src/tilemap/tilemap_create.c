@@ -9,6 +9,7 @@
 #include <SFML/Graphics/VertexArray.h>
 #include <SFML/Graphics/View.h>
 #include <SFML/System/Vector2.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -16,11 +17,24 @@
 
 #include "tilemap.h"
 
-static void init_tile_data(tilemap_t *tilemap, size_t nb_tiles)
+void init_tile_data(tilemap_t *tilemap, size_t nb_tiles)
 {
+    int random_low = rand() % 3;
+
     for (size_t i = 0; i < nb_tiles; i++) {
-        tilemap->heights[i] = MIN_HEIGHT;
+        tilemap->heights[i] = MAX_HEIGHT / 8 + rand() % 8 - 4;
         tilemap->types[i] = TILE_TYPE_GRASS;
+    }
+    for (size_t i = 0; i < nb_tiles; i++) {
+        if (random_low == 1 && i % tilemap->width < tilemap->width / 2
+            && i < tilemap->height * tilemap->width / 2) {
+            tilemap->heights[i] = MAX_HEIGHT / 2 + rand() % 4 - 1;
+            tilemap->types[i] = get_tile_type(tilemap->heights[i]);
+        }
+        if (random_low == 2) {
+            tilemap->heights[i] = MAX_HEIGHT / 4 + rand() % 6 - 2;
+            tilemap->types[i] = get_tile_type(tilemap->heights[i]);
+        }
     }
 }
 
@@ -58,7 +72,6 @@ tilemap_t *tilemap_create(size_t width, size_t height, sfVector2u *window_size)
         tilemap_destroy(tilemap);
         return nullptr;
     }
-    randomize_tile_map(tilemap);
     randomize_tile_map(tilemap);
     tilemap_calculate_vertices(tilemap);
     return tilemap;

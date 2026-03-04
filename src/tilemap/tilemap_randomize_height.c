@@ -24,32 +24,70 @@ static void resolve_height_issues(tilemap_t *map)
     int *height = map->heights;
 
     for (size_t i = 0; i < map->height * map->width; i++) {
-        while (height[i] < MIN_HEIGHT + 3)
-            height[i] += rand() % 2;
+        while (height[i] < MIN_HEIGHT)
+            height[i] += rand() % MAX_HEIGHT / 16;
         while (height[i] > MAX_HEIGHT)
-            height[i] += rand() % 6 - 10;
+            height[i] -= rand() % MAX_HEIGHT / 16;
     }
+}
+
+static int resolve_single_tile_height(int height)
+{
+    while (height < MIN_HEIGHT)
+        height += rand() % MAX_HEIGHT / 32;
+    while (height > MAX_HEIGHT)
+        height -= rand() % MAX_HEIGHT / 32;
+    return height;
+}
+
+int check_amount_tiles_nearby(size_t pos, tilemap_t *map)
+{
+    int div = 0;
+
+    if (pos > map->width)
+        div += 1;
+    if (pos < (map->height - 1) * map->width)
+        div += 1;
+    if (pos % map->width > 0)
+        div += 1;
+    if (pos % map->width < map->width)
+        div += 1;
+    return div;
+}
+
+int check_tile_height_availability(size_t pos, tilemap_t *map)
+{
+    int *height_map = map->heights;
+    int number = 0;
+
+    if (pos > map->width)
+        number += height_map[pos - map->width];
+    if (pos < (map->height - 1) * map->width)
+        number += height_map[pos + map->width];
+    if (pos % map->width > 0)
+        number += height_map[pos - 1];
+    if (pos % map->width < map->width)
+        number += height_map[pos + 1];
+    return number;
 }
 
 void randomize_tile_map(tilemap_t *map)
 {
     int *height_map = map->heights;
+    int number = 0;
+    int div = 0;
 
+    init_tile_data(map, map->height * map->width);
     for (size_t i = 0; i < map->width * map->height; i++) {
-        if (i < map->width && i != 0)
-            height_map[i] += height_map[i - 1] + rand() % 2 - 1;
-        if (i % map->width == 0 && i > map->width)
-            height_map[i] += height_map[i - map->width] + rand() % 2 - 1;
-        if (i % map->width != 0 && i > map->width)
-            height_map[i] +=
-                (height_map[i - 1] + height_map[i - map->width]) / 2
-                + (rand() % 2) - 1;
-        if (height_map[i] > MAX_HEIGHT)
-            height_map[i] -= rand() % MAX_HEIGHT / 64;
-        if (height_map[i] < MIN_HEIGHT)
-            height_map[i] -= rand() % MAX_HEIGHT / 4;
+        number = check_tile_height_availability(i, map);
+        div = check_amount_tiles_nearby(i, map);
+        if (number / div < number / 4)
+            div = 4;
+        height_map[i] = number / div + rand() % 4 - 1;
+        height_map[i] = resolve_single_tile_height(height_map[i]);
     }
     resolve_height_issues(map);
     for (size_t i = 0; i < map->width * map->height; i++)
         map->types[i] = get_tile_type(height_map[i]);
+    tilemap_calculate_vertices(map);
 }

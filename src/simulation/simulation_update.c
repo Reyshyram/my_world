@@ -11,6 +11,7 @@
 
 #include "graphics/engine.h"
 
+#include "graphics/ui.h"
 #include "simulation.h"
 #include "tilemap.h"
 
@@ -81,4 +82,9 @@ void simulation_update(engine_t *engine)
     handle_camera_rotation(engine, data, speed_factor);
     handle_camera_zoom(engine, data, speed_factor);
     tilemap_update_hover(data->tilemap, engine->window);
+    ui_button_update(engine, data->up);
+    ui_button_update(engine, data->down);
+    ui_button_update(engine, data->change_type);
+    ui_button_update(engine, data->bomb);
+    ui_button_update(engine, data->random);
 }

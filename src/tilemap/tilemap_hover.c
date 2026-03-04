@@ -12,6 +12,7 @@
 #include <SFML/System/Vector2.h>
 #include <math.h>
 #include <stdlib.h>
+#include <sys/types.h>
 
 #include "tilemap.h"
 

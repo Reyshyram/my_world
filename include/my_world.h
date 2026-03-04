@@ -16,6 +16,10 @@
     #define WIN_HEIGHT 720
     #define WIN_WIDTH 1280
     #define FPS 60
+
+    #define BUTTON_WITDH 125
+    #define BUTTON_HEIGHT 56
+    #define UI_BUTTON_TEXTURE "assets/sprites/ui/button.png"
 // clang-format on
 
 #endif /* !MY_WORLD_H */

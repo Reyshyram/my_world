@@ -9,6 +9,7 @@
 
 #include "graphics/engine.h"
 
+#include "graphics/ui.h"
 #include "simulation.h"
 
 void simulation_event(engine_t *engine, sfEvent *event)
@@ -17,4 +18,9 @@ void simulation_event(engine_t *engine, sfEvent *event)
 
     if (!data || !event)
         return;
+    ui_button_events(data->up, event, engine);
+    ui_button_events(data->down, event, engine);
+    ui_button_events(data->change_type, event, engine);
+    ui_button_events(data->bomb, event, engine);
+    ui_button_events(data->random, event, engine);
 }

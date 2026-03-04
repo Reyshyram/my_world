@@ -13,11 +13,17 @@
     #include <SFML/System/Vector2.h>
 
     #include "graphics/engine.h"
+    #include "graphics/ui.h"
     #include "tilemap.h"
 // clang-format on
 
 typedef struct {
     tilemap_t *tilemap;
+    ui_button_t *up;
+    ui_button_t *down;
+    ui_button_t *change_type;
+    ui_button_t *bomb;
+    ui_button_t *random;
 } simulation_data_t;
 
 scene_t *simulation_create(void);

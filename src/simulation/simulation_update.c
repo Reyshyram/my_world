@@ -87,4 +87,5 @@ void simulation_update(engine_t *engine)
     ui_button_update(engine, data->change_type);
     ui_button_update(engine, data->bomb);
     ui_button_update(engine, data->random);
+    ui_button_update(engine, data->reset);
 }

@@ -23,4 +23,5 @@ void simulation_event(engine_t *engine, sfEvent *event)
     ui_button_events(data->change_type, event, engine);
     ui_button_events(data->bomb, event, engine);
     ui_button_events(data->random, event, engine);
+    ui_button_events(data->reset, event, engine);
 }

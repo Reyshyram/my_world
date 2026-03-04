@@ -7,6 +7,7 @@
 
 #include <SFML/Graphics/Color.h>
 #include <SFML/System/Vector2.h>
+#include <stddef.h>
 
 #include "graphics/engine.h"
 #include "graphics/ui.h"
@@ -15,7 +16,7 @@
 #include "simulation.h"
 #include "tilemap.h"
 
-static void set_up_buttons(engine_t *engine, simulation_data_t *data)
+static void set_up_top_buttons(engine_t *engine, simulation_data_t *data)
 {
     data->up = ui_button_create(engine, UI_BUTTON_TEXTURE,
         &(sfVector2f) {85, 45}, &(sfVector2f) {BUTTON_WITDH, BUTTON_HEIGHT});
@@ -29,11 +30,35 @@ static void set_up_buttons(engine_t *engine, simulation_data_t *data)
     data->bomb = ui_button_create(engine, UI_BUTTON_TEXTURE,
         &(sfVector2f) {505, 45}, &(sfVector2f) {BUTTON_WITDH, BUTTON_HEIGHT});
     ui_button_set_text(data->bomb, "BOMB", 24, &sfWhite);
+}
+
+static void reset_tilemap(tilemap_t *map)
+{
+    for (size_t i = 0; i < map->height * map->width; i++) {
+        map->heights[i] = MIN_HEIGHT;
+        map->types[i] = TILE_TYPE_GRASS;
+    }
+    tilemap_calculate_vertices(map);
+}
+
+static void set_up_bottom_buttons(engine_t *engine, simulation_data_t *data)
+{
     data->random = ui_button_create(engine, UI_BUTTON_TEXTURE,
         &(sfVector2f) {85, 685}, &(sfVector2f) {BUTTON_WITDH, BUTTON_HEIGHT});
     ui_button_set_text(data->random, "RANDOM", 24, &sfWhite);
     data->random->data = data->tilemap;
     data->random->on_click = (void *) randomize_tile_map;
+    data->reset = ui_button_create(engine, UI_BUTTON_TEXTURE,
+        &(sfVector2f) {225, 685}, &(sfVector2f) {BUTTON_WITDH, BUTTON_HEIGHT});
+    ui_button_set_text(data->reset, "RESET", 24, &sfWhite);
+    data->reset->data = data->tilemap;
+    data->reset->on_click = (void *) reset_tilemap;
+}
+
+static void set_up_buttons(engine_t *engine, simulation_data_t *data)
+{
+    set_up_top_buttons(engine, data);
+    set_up_bottom_buttons(engine, data);
 }
 
 void simulation_enter(engine_t *engine)

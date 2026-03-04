@@ -9,7 +9,6 @@
 #include <SFML/Graphics/VertexArray.h>
 #include <SFML/Graphics/View.h>
 #include <SFML/System/Vector2.h>
-#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 

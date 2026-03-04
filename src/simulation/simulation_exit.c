@@ -26,5 +26,6 @@ void simulation_exit(engine_t *engine)
     ui_button_destroy(data->change_type);
     ui_button_destroy(data->bomb);
     ui_button_destroy(data->random);
+    ui_button_destroy(data->reset);
     free(data);
 }

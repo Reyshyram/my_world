@@ -30,6 +30,9 @@ static void draw_buttons(engine_t *engine, simulation_data_t *data)
     sfRenderWindow_drawRectangleShape(engine->window, data->random->background,
         nullptr);
     sfRenderWindow_drawText(engine->window, data->random->text, nullptr);
+    sfRenderWindow_drawRectangleShape(engine->window, data->reset->background,
+        nullptr);
+    sfRenderWindow_drawText(engine->window, data->reset->text, nullptr);
 }
 
 void simulation_draw(engine_t *engine)

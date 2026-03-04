@@ -45,6 +45,13 @@ typedef enum {
     CORNER_BOTTOM_LEFT = 3,
 } corner_t;
 
+static const sfVector2u CORNERS_OFFSETS[4] = {
+    {0, 0},
+    {1, 0},
+    {1, 1},
+    {0, 1},
+};
+
 static const sfColor TILE_COLORS[TILE_TYPE_COUNT] = {
     [TILE_TYPE_GRASS] = {75, 128, 61, 255},
     [TILE_TYPE_DIRT] = {132, 95, 66, 255},
@@ -58,9 +65,15 @@ typedef struct tilemap {
     int *heights;
     tile_type_t *types;
     sfVertexArray *vertices;
+    sfVertexArray *hover_vertices;
     sfView *view;
     float rotation_rad;
+    bool is_tile_hovered;
+    size_t hover_x;
+    size_t hover_y;
 } tilemap_t;
+
+static const sfColor HOVER_COLOR = {255, 255, 255, 80};
 
 typedef struct {
     sfVertexArray *vertices;
@@ -93,5 +106,6 @@ void tilemap_calculate_vertices(tilemap_t *tilemap);
 void tilemap_draw(const tilemap_t *tilemap, sfRenderWindow *window);
 void randomize_tile_map(tilemap_t *map);
 tile_type_t get_tile_type(int height);
+void tilemap_update_hover(tilemap_t *tilemap, sfRenderWindow *window);
 
 #endif /* !TILEMAP_H_ */

@@ -16,6 +16,14 @@
 
 #include "tilemap.h"
 
+static void init_tile_data(tilemap_t *tilemap, size_t nb_tiles)
+{
+    for (size_t i = 0; i < nb_tiles; i++) {
+        tilemap->heights[i] = MIN_HEIGHT;
+        tilemap->types[i] = TILE_TYPE_GRASS;
+    }
+}
+
 static bool tilemap_initialize(tilemap_t *tilemap, sfVector2u *window_size)
 {
     size_t nb_tiles = tilemap->width * tilemap->height;
@@ -23,15 +31,14 @@ static bool tilemap_initialize(tilemap_t *tilemap, sfVector2u *window_size)
     tilemap->heights = malloc(sizeof(int) * nb_tiles);
     tilemap->types = malloc(sizeof(tile_type_t) * nb_tiles);
     tilemap->vertices = sfVertexArray_create();
+    tilemap->hover_vertices = sfVertexArray_create();
     tilemap->view = sfView_create();
     if (!tilemap->heights || !tilemap->types || !tilemap->vertices
-        || !tilemap->view)
+        || !tilemap->view || !tilemap->hover_vertices)
         return false;
-    for (size_t i = 0; i < nb_tiles; i++) {
-        tilemap->heights[i] = MIN_HEIGHT;
-        tilemap->types[i] = TILE_TYPE_GRASS;
-    }
+    init_tile_data(tilemap, nb_tiles);
     sfVertexArray_setPrimitiveType(tilemap->vertices, sfQuads);
+    sfVertexArray_setPrimitiveType(tilemap->hover_vertices, sfQuads);
     sfView_setSize(tilemap->view, TOV2F(*window_size));
     sfView_setCenter(tilemap->view,
         (sfVector2f) {0.0F, -(float) MAX_HEIGHT * TILE_HEIGHT / 2.0F});

@@ -29,16 +29,10 @@ void add_tile_side(sfVertexArray *vertex_array, const sfVector2f corners[4],
 static void calculate_corners_pos(const tilemap_t *map,
     tile_render_t *tile_render, const draw_order_t *tile)
 {
-    const sfVector2u offsets[4] = {
-        {0, 0},
-        {1, 0},
-        {1, 1},
-        {0, 1},
-    };
-
     for (int i = 0; i < 4; i++)
-        tile_render->corners[i] = project_point(map, tile->x + offsets[i].x,
-            tile->y + offsets[i].y, tile_render->tile_height);
+        tile_render->corners[i] =
+            project_point(map, tile->x + CORNERS_OFFSETS[i].x,
+            tile->y + CORNERS_OFFSETS[i].y, tile_render->tile_height);
 }
 
 static void add_tile_vertices(const tilemap_t *tilemap,

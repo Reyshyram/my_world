@@ -16,5 +16,7 @@ void tilemap_draw(const tilemap_t *map, sfRenderWindow *window)
         return;
     sfRenderWindow_setView(window, map->view);
     sfRenderWindow_drawVertexArray(window, map->vertices, nullptr);
+    if (map->hover_vertices)
+        sfRenderWindow_drawVertexArray(window, map->hover_vertices, nullptr);
     sfRenderWindow_setView(window, sfRenderWindow_getDefaultView(window));
 }

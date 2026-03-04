@@ -6,6 +6,7 @@
 */
 
 #include <SFML/Graphics/View.h>
+#include <SFML/System/Vector2.h>
 #include <SFML/Window/Keyboard.h>
 
 #include "graphics/engine.h"
@@ -79,4 +80,5 @@ void simulation_update(engine_t *engine)
     handle_camera_movement(engine, data, speed_factor);
     handle_camera_rotation(engine, data, speed_factor);
     handle_camera_zoom(engine, data, speed_factor);
+    tilemap_update_hover(data->tilemap, engine->window);
 }

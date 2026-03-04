@@ -52,5 +52,4 @@ void randomize_tile_map(tilemap_t *map)
     resolve_height_issues(map);
     for (size_t i = 0; i < map->width * map->height; i++)
         map->types[i] = get_tile_type(height_map[i]);
-
 }

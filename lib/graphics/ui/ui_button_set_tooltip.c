@@ -5,6 +5,12 @@
 ** ui button set text but tooltip
 */
 
+#include <SFML/Graphics/Color.h>
+#include <SFML/Graphics/Rect.h>
+#include <SFML/Graphics/RectangleShape.h>
+#include <SFML/Graphics/Text.h>
+#include <SFML/System/Vector2.h>
+
 #include "graphics/ui.h"
 
 void ui_button_set_tooltip(ui_button_t *button, const char *text,

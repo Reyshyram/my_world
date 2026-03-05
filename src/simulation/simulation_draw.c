@@ -6,11 +6,9 @@
 */
 
 #include <SFML/Graphics/RenderWindow.h>
-#include <SFML/Graphics/Types.h>
 
 #include "graphics/engine.h"
 #include "graphics/ui.h"
-
 #include "simulation.h"
 #include "tilemap.h"
 

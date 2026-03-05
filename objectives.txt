@@ -21,8 +21,8 @@ Should
 
 [x] Your window should stick between 800x600 pixels and 1920x1080 pixels,
 [] the size of the map should be selected using editable textboxes in the window,
-[] help boxes should appear as the mouse hovers elements in the toolbar(s),
-[] the buttons should have at least 3 visual states : idle, hover, and clicked,
+[x] help boxes should appear as the mouse hovers elements in the toolbar(s),
+[x] the buttons should have at least 3 visual states : idle, hover, and clicked,
 [] the map should have additional layer (water, lava etc...),
 [x] tiles should have a texture,
 [] the format of saved maps should be in a .legend file,

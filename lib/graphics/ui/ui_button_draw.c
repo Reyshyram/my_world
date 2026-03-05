@@ -5,6 +5,8 @@
 ** ui_button but it draws
 */
 
+#include <SFML/Graphics/RenderWindow.h>
+
 #include "graphics/engine.h"
 #include "graphics/ui.h"
 

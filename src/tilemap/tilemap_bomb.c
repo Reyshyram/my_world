@@ -22,6 +22,14 @@
 static void lower_tile_at_pos(tilemap_t *map, size_t x_pos, size_t y_pos,
     size_t clicked_pos)
 {
+    size_t position = clicked_pos + x_pos + y_pos * map->width;
+
+    if (position >= map->height * map->width)
+        return;
+    if (map->heights[position] <= MIN_HEIGHT) {
+        map->heights[position] = MIN_HEIGHT;
+        return;
+    }
     map->heights[clicked_pos + x_pos + y_pos * map->width] -= 1;
 }
 
@@ -48,11 +56,9 @@ static void lower_nearby_tiles(tilemap_t *map, int range)
 
 void bomb_tile(tilemap_t *map)
 {
-    int *tile_map = map->heights;
-    size_t clicked_pos = map->clicked_x + map->clicked_y * map->width;
+    int clicked_pos = map->clicked_x + map->clicked_y * map->width;
 
-    if (map->clicked_x == -1 || map->clicked_y == -1
-        || tile_map[clicked_pos] - BOMB_RANGE < 0)
+    if (clicked_pos < 0)
         return;
     for (int i = 0; i <= BOMB_RANGE; i++) {
         lower_nearby_tiles(map, i);

@@ -64,9 +64,9 @@ int check_tile_height_availability(size_t pos, tilemap_t *map)
         number += height_map[pos - map->width];
     if (pos < (map->height - 1) * map->width)
         number += height_map[pos + map->width];
-    if (pos % map->width > 0)
+    if (pos % map->width > 0 && pos > 0)
         number += height_map[pos - 1];
-    if (pos % map->width < map->width)
+    if (pos % map->width < map->width && pos < map->width * map->height - 1)
         number += height_map[pos + 1];
     return number;
 }

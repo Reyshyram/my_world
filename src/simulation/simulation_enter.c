@@ -26,6 +26,16 @@ static void set_up_top_buttons_functions(simulation_data_t *data)
     data->down->on_click = (void *) lower_tile_height;
     data->bomb->on_click = (void *) bomb_tile;
     data->change_type->on_click = (void *) change_tile_type;
+    ui_button_set_tooltip(data->up,
+        "Raises the height of selected tile by one.\n(Shortcut: R)",
+        data->up->char_size, &sfWhite);
+    ui_button_set_tooltip(data->down,
+        "Lowers the height of selected tile by one.\n(Shortcut: L)",
+        data->up->char_size, &sfWhite);
+    ui_button_set_tooltip(data->change_type,
+        "Changes the type of selected tile.", data->up->char_size, &sfWhite);
+    ui_button_set_tooltip(data->bomb, "Lowers an area like a bomb would.",
+        data->up->char_size, &sfWhite);
 }
 
 static void set_up_top_buttons(engine_t *engine, simulation_data_t *data)

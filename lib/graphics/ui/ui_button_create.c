@@ -17,6 +17,14 @@
 #include "graphics/resources.h"
 #include "graphics/ui.h"
 
+static void setup_button_text(engine_t *engine, ui_button_t *button)
+{
+    button->text = sfText_create();
+    button->tooltip_text = sfText_create();
+    sfText_setFont(button->text, engine->default_font);
+    sfText_setFont(button->tooltip_text, engine->default_font);
+}
+
 ui_button_t *ui_button_create(engine_t *engine, const char *texture_path,
     sfVector2f *pos, sfVector2f *size)
 {
@@ -34,8 +42,7 @@ ui_button_t *ui_button_create(engine_t *engine, const char *texture_path,
     bounds = sfRectangleShape_getLocalBounds(button->background);
     sfRectangleShape_setOrigin(button->background,
         (sfVector2f) {bounds.width / 2, bounds.height / 2});
-    button->text = sfText_create();
-    sfText_setFont(button->text, engine->default_font);
+    setup_button_text(engine, button);
     button->scale = (sfVector2f) {1, 1};
     button->char_size = 16;
     return button;

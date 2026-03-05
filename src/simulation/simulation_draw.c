@@ -15,24 +15,12 @@
 
 static void draw_buttons(engine_t *engine, simulation_data_t *data)
 {
-    sfRenderWindow_drawRectangleShape(engine->window, data->up->background,
-        nullptr);
-    sfRenderWindow_drawText(engine->window, data->up->text, nullptr);
-    sfRenderWindow_drawRectangleShape(engine->window, data->down->background,
-        nullptr);
-    sfRenderWindow_drawText(engine->window, data->down->text, nullptr);
-    sfRenderWindow_drawRectangleShape(engine->window,
-        data->change_type->background, nullptr);
-    sfRenderWindow_drawText(engine->window, data->change_type->text, nullptr);
-    sfRenderWindow_drawRectangleShape(engine->window, data->bomb->background,
-        nullptr);
-    sfRenderWindow_drawText(engine->window, data->bomb->text, nullptr);
-    sfRenderWindow_drawRectangleShape(engine->window, data->random->background,
-        nullptr);
-    sfRenderWindow_drawText(engine->window, data->random->text, nullptr);
-    sfRenderWindow_drawRectangleShape(engine->window, data->reset->background,
-        nullptr);
-    sfRenderWindow_drawText(engine->window, data->reset->text, nullptr);
+    ui_button_draw(engine, data->up);
+    ui_button_draw(engine, data->down);
+    ui_button_draw(engine, data->change_type);
+    ui_button_draw(engine, data->bomb);
+    ui_button_draw(engine, data->random);
+    ui_button_draw(engine, data->reset);
 }
 
 void simulation_draw(engine_t *engine)

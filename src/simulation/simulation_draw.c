@@ -6,6 +6,7 @@
 */
 
 #include <SFML/Graphics/RenderWindow.h>
+#include <SFML/Graphics/Types.h>
 
 #include "graphics/engine.h"
 #include "graphics/ui.h"
@@ -21,6 +22,8 @@ static void draw_buttons(engine_t *engine, simulation_data_t *data)
     ui_button_draw(engine, data->bomb);
     ui_button_draw(engine, data->random);
     ui_button_draw(engine, data->reset);
+    ui_button_draw(engine, data->strength_minus);
+    ui_button_draw(engine, data->strength_plus);
 }
 
 void simulation_draw(engine_t *engine)
@@ -32,4 +35,5 @@ void simulation_draw(engine_t *engine)
     if (data->tilemap)
         tilemap_draw(data->tilemap, engine->window);
     draw_buttons(engine, data);
+    sfRenderWindow_drawText(engine->window, data->strength_txt, nullptr);
 }

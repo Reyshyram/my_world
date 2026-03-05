@@ -78,5 +78,6 @@ tilemap_t *tilemap_create(size_t width, size_t height, sfVector2u *window_size)
     tilemap_calculate_vertices(tilemap);
     tilemap->clicked_x = -1;
     tilemap->clicked_y = -1;
+    tilemap->tool_strength = 2;
     return tilemap;
 }

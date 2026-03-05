@@ -25,6 +25,9 @@ typedef struct {
     ui_button_t *bomb;
     ui_button_t *random;
     ui_button_t *reset;
+    ui_button_t *strength_plus;
+    ui_button_t *strength_minus;
+    sfText *strength_txt;
 } simulation_data_t;
 
 scene_t *simulation_create(void);

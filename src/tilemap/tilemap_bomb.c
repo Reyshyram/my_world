@@ -56,11 +56,11 @@ static void lower_nearby_tiles(tilemap_t *map, int range)
 
 void bomb_tile(tilemap_t *map)
 {
-    int clicked_pos = map->clicked_x + map->clicked_y * map->width;
+    int clicked_pos = map->clicked_x + map->clicked_y * (int) map->width;
 
     if (clicked_pos < 0)
         return;
-    for (int i = 0; i <= BOMB_RANGE; i++) {
+    for (int i = 0; i <= (int) map->tool_strength * 2; i++) {
         lower_nearby_tiles(map, i);
     }
     tilemap_calculate_vertices(map);

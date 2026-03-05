@@ -19,6 +19,6 @@ void ui_button_draw(engine_t *engine, ui_button_t *button)
     sfRenderWindow_drawRectangleShape(engine->window, button->background,
         nullptr);
     sfRenderWindow_drawText(engine->window, button->text, nullptr);
-    if (button->hovered)
+    if (button->hovered && button->tooltip_text)
         button_draw_tooltip(engine, button);
 }

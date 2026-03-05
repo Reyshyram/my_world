@@ -19,5 +19,7 @@ void ui_button_destroy(ui_button_t *button)
         sfRectangleShape_destroy(button->background);
     if (button->text)
         sfText_destroy(button->text);
+    if (button->tooltip_text)
+        sfText_destroy(button->tooltip_text);
     free(button);
 }

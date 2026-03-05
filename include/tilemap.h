@@ -30,6 +30,8 @@
     #define ZOOM_SPEED 0.5F
 
     #define BOMB_RANGE 10
+    #define MIN_TOOL_STRENGTH 1
+    #define MAX_TOOL_STRENGTH 32
 // clang-format on
 
 typedef enum tile_type {
@@ -76,6 +78,7 @@ typedef struct tilemap {
     size_t hover_y;
     int clicked_x;
     int clicked_y;
+    size_t tool_strength;
 } tilemap_t;
 
 static const sfColor HOVER_COLOR = {255, 255, 255, 80};
@@ -116,6 +119,8 @@ tile_type_t get_tile_type(int height);
 void tilemap_update_hover(tilemap_t *tilemap, sfRenderWindow *window);
 void lower_tile_height(tilemap_t *map);
 void raise_tile_height(tilemap_t *map);
+void increase_tool_strength(tilemap_t *map);
+void decrease_tool_strength(tilemap_t *map);
 void select_hovered_tile(tilemap_t *map);
 void update_selected_vertices(tilemap_t *map);
 void change_tile_type(tilemap_t *map);

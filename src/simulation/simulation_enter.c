@@ -6,6 +6,7 @@
 */
 
 #include <SFML/Graphics/Color.h>
+#include <SFML/Graphics/Text.h>
 #include <SFML/System/Vector2.h>
 #include <stddef.h>
 
@@ -64,6 +65,28 @@ static void reset_tilemap(tilemap_t *map)
     tilemap_calculate_vertices(map);
 }
 
+static void set_up_strength_ui(engine_t *engine, simulation_data_t *data)
+{
+    data->strength_minus =
+        ui_button_create(engine, UI_BUTTON_TEXTURE, &(sfVector2f) {1050, 685},
+        &(sfVector2f) {BUTTON_WITDH, BUTTON_HEIGHT});
+    ui_button_set_text(data->strength_minus, "-", 24, &sfWhite);
+    data->strength_minus->data = data->tilemap;
+    data->strength_minus->on_click = (void *) decrease_tool_strength;
+    data->strength_plus =
+        ui_button_create(engine, UI_BUTTON_TEXTURE, &(sfVector2f) {1190, 685},
+        &(sfVector2f) {BUTTON_WITDH, BUTTON_HEIGHT});
+    ui_button_set_text(data->strength_plus, "+", 24, &sfWhite);
+    data->strength_plus->data = data->tilemap;
+    data->strength_plus->on_click = (void *) increase_tool_strength;
+    data->strength_txt = sfText_create();
+    sfText_setFont(data->strength_txt, engine->default_font);
+    sfText_setCharacterSize(data->strength_txt, 20);
+    sfText_setFillColor(data->strength_txt, sfWhite);
+    sfText_setString(data->strength_txt, "Strength: 2");
+    sfText_setPosition(data->strength_txt, (sfVector2f) {1120, 635});
+}
+
 static void set_up_bottom_buttons(engine_t *engine, simulation_data_t *data)
 {
     data->random = ui_button_create(engine, UI_BUTTON_TEXTURE,
@@ -76,6 +99,7 @@ static void set_up_bottom_buttons(engine_t *engine, simulation_data_t *data)
     ui_button_set_text(data->reset, "RESET", 24, &sfWhite);
     data->reset->data = data->tilemap;
     data->reset->on_click = (void *) reset_tilemap;
+    set_up_strength_ui(engine, data);
 }
 
 static void set_up_buttons(engine_t *engine, simulation_data_t *data)

@@ -5,13 +5,16 @@
 ** Update the simulation
 */
 
+#include <SFML/Graphics/Rect.h>
+#include <SFML/Graphics/Text.h>
 #include <SFML/Graphics/View.h>
 #include <SFML/System/Vector2.h>
 #include <SFML/Window/Keyboard.h>
+#include <stdio.h>
 
 #include "graphics/engine.h"
-
 #include "graphics/ui.h"
+
 #include "simulation.h"
 #include "tilemap.h"
 
@@ -70,6 +73,21 @@ static void handle_camera_zoom(engine_t *engine, simulation_data_t *data,
             1 + ZOOM_SPEED * engine->dt * speed_factor);
 }
 
+static void update_strength_txt(simulation_data_t *data)
+{
+    char buffer[32];
+    sfFloatRect bounds;
+
+    snprintf(buffer, sizeof(buffer), "Strength: %zu",
+        data->tilemap->tool_strength);
+    sfText_setString(data->strength_txt, buffer);
+    bounds = sfText_getLocalBounds(data->strength_txt);
+    sfText_setOrigin(data->strength_txt,
+        (sfVector2f) {bounds.left + bounds.width / 2,
+            bounds.top + bounds.height / 2});
+    sfText_setPosition(data->strength_txt, (sfVector2f) {1120, 630});
+}
+
 void simulation_update(engine_t *engine)
 {
     simulation_data_t *data = (simulation_data_t *) engine->scene->data;
@@ -88,4 +106,7 @@ void simulation_update(engine_t *engine)
     ui_button_update(engine, data->bomb);
     ui_button_update(engine, data->random);
     ui_button_update(engine, data->reset);
+    ui_button_update(engine, data->strength_minus);
+    ui_button_update(engine, data->strength_plus);
+    update_strength_txt(data);
 }

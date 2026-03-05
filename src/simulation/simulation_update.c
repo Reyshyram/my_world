@@ -85,7 +85,7 @@ static void update_strength_txt(simulation_data_t *data)
     sfText_setOrigin(data->strength_txt,
         (sfVector2f) {bounds.left + bounds.width / 2,
             bounds.top + bounds.height / 2});
-    sfText_setPosition(data->strength_txt, (sfVector2f) {1120, 630});
+    sfText_setPosition(data->strength_txt, (sfVector2f) {900, 685});
 }
 
 void simulation_update(engine_t *engine)

@@ -34,7 +34,9 @@ ui_button_t *ui_button_create(engine_t *engine, const char *texture_path,
 void ui_button_destroy(ui_button_t *button);
 void ui_button_update(engine_t *engine, ui_button_t *button);
 void ui_button_draw(engine_t *engine, ui_button_t *button);
-void ui_button_set_tooltip(ui_button_t *button, const char *text,
+void ui_button_set_top_tooltip(ui_button_t *button, const char *text,
+    int char_size, sfColor *color);
+void ui_button_set_bottom_tooltip(ui_button_t *button, const char *text,
     int char_size, sfColor *color);
 void ui_button_events(ui_button_t *button, const sfEvent *event,
     const engine_t *engine);

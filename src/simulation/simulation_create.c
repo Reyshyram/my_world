@@ -12,7 +12,7 @@
 
 #include "simulation.h"
 
-scene_t *simulation_create(void)
+scene_t *simulation_create(int width, int height, char *filename)
 {
     scene_t *scene = malloc(sizeof(*scene));
 
@@ -29,5 +29,8 @@ scene_t *simulation_create(void)
         free(scene);
         return nullptr;
     }
+    ((simulation_data_t *) scene->data)->map_width = width;
+    ((simulation_data_t *) scene->data)->map_height = height;
+    ((simulation_data_t *) scene->data)->filename = filename;
     return scene;
 }

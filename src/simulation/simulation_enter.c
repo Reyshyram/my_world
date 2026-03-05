@@ -19,32 +19,36 @@
 
 static void set_up_top_tooltips(simulation_data_t *data)
 {
-    ui_button_set_tooltip(data->up,
+    ui_button_set_top_tooltip(data->up,
         "Raises the height of selected tile by strength.\n(Shortcut: R)",
         (int) data->up->char_size, &sfWhite);
-    ui_button_set_tooltip(data->down,
+    ui_button_set_top_tooltip(data->down,
         "Lowers the height of selected tile by strength.\n(Shortcut: L)",
         (int) data->up->char_size, &sfWhite);
-    ui_button_set_tooltip(data->change_type,
+    ui_button_set_top_tooltip(data->change_type,
         "Changes the type of selected tile.\n(Shortcut: T)",
         (int) data->up->char_size, &sfWhite);
-    ui_button_set_tooltip(data->bomb,
+    ui_button_set_top_tooltip(data->bomb,
         "Lowers an area like a bomb would.\n(Shortcut: B)",
         (int) data->up->char_size, &sfWhite);
 }
 
 static void set_up_bottom_tooltips(simulation_data_t *data)
 {
-    ui_button_set_tooltip(data->random, "Randomizes the tilemap.",
+    ui_button_set_bottom_tooltip(data->random, "Randomizes the tilemap.",
         (int) data->up->char_size, &sfWhite);
-    ui_button_set_tooltip(data->reset, "Resets the tilemap.",
+    ui_button_set_bottom_tooltip(data->reset, "Resets the tilemap.",
         (int) data->up->char_size, &sfWhite);
-    ui_button_set_tooltip(data->strength_minus,
+    ui_button_set_bottom_tooltip(data->strength_minus,
         "Decreases the strength of the tools.\n(The height, bomb radius,...)",
         (int) data->up->char_size, &sfWhite);
-    ui_button_set_tooltip(data->strength_plus,
+    sfText_setPosition(data->strength_minus->tooltip_text,
+        (sfVector2f) {950, 625});
+    ui_button_set_bottom_tooltip(data->strength_plus,
         "Increases the strength of the tools.\n(The height, bomb radius,...)",
         (int) data->up->char_size, &sfWhite);
+    sfText_setPosition(data->strength_plus->tooltip_text,
+        (sfVector2f) {950, 625});
 }
 
 static void set_up_top_buttons_functions(simulation_data_t *data)
@@ -104,7 +108,7 @@ static void set_up_strength_ui(engine_t *engine, simulation_data_t *data)
     sfText_setCharacterSize(data->strength_txt, 20);
     sfText_setFillColor(data->strength_txt, sfWhite);
     sfText_setString(data->strength_txt, "Strength: 2");
-    sfText_setPosition(data->strength_txt, (sfVector2f) {1120, 635});
+    sfText_setPosition(data->strength_txt, (sfVector2f) {900, 685});
 }
 
 static void set_up_bottom_buttons(engine_t *engine, simulation_data_t *data)
@@ -136,11 +140,7 @@ void simulation_enter(engine_t *engine)
 
     if (!data)
         return;
-    if (engine->optional_height != 0 && engine->optional_width != 0)
-        data->tilemap = tilemap_create(engine->optional_width,
-            engine->optional_height, &engine->window_size);
-    else
-        data->tilemap =
-            tilemap_create(MAP_DEFAULT_W, MAP_DEFAULT_H, &engine->window_size);
+    data->tilemap = tilemap_create(data->map_width, data->map_height,
+        &engine->window_size);
     set_up_buttons(engine, data);
 }

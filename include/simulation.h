@@ -19,6 +19,9 @@
 
 typedef struct {
     tilemap_t *tilemap;
+    unsigned int map_width;
+    unsigned int map_height;
+    char *filename;
     ui_button_t *up;
     ui_button_t *down;
     ui_button_t *change_type;
@@ -30,7 +33,7 @@ typedef struct {
     sfText *strength_txt;
 } simulation_data_t;
 
-scene_t *simulation_create(void);
+scene_t *simulation_create(int width, int height, char *filename);
 void simulation_enter(engine_t *engine);
 void simulation_exit(engine_t *engine);
 void simulation_draw(engine_t *engine);

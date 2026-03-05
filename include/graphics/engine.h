@@ -60,8 +60,6 @@ struct engine {
     sfRectangleShape *transition_rect;
     float transition_alpha;
     enum transition_state transition_state;
-    int optional_height;
-    int optional_width;
 };
 
 struct scene {

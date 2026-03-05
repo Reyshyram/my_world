@@ -17,6 +17,36 @@
 #include "simulation.h"
 #include "tilemap.h"
 
+static void set_up_top_tooltips(simulation_data_t *data)
+{
+    ui_button_set_tooltip(data->up,
+        "Raises the height of selected tile by strength.\n(Shortcut: R)",
+        (int) data->up->char_size, &sfWhite);
+    ui_button_set_tooltip(data->down,
+        "Lowers the height of selected tile by strength.\n(Shortcut: L)",
+        (int) data->up->char_size, &sfWhite);
+    ui_button_set_tooltip(data->change_type,
+        "Changes the type of selected tile.\n(Shortcut: T)",
+        (int) data->up->char_size, &sfWhite);
+    ui_button_set_tooltip(data->bomb,
+        "Lowers an area like a bomb would.\n(Shortcut: B)",
+        (int) data->up->char_size, &sfWhite);
+}
+
+static void set_up_bottom_tooltips(simulation_data_t *data)
+{
+    ui_button_set_tooltip(data->random, "Randomizes the tilemap.",
+        (int) data->up->char_size, &sfWhite);
+    ui_button_set_tooltip(data->reset, "Resets the tilemap.",
+        (int) data->up->char_size, &sfWhite);
+    ui_button_set_tooltip(data->strength_minus,
+        "Decreases the strength of the tools.\n(The height, bomb radius,...)",
+        (int) data->up->char_size, &sfWhite);
+    ui_button_set_tooltip(data->strength_plus,
+        "Increases the strength of the tools.\n(The height, bomb radius,...)",
+        (int) data->up->char_size, &sfWhite);
+}
+
 static void set_up_top_buttons_functions(simulation_data_t *data)
 {
     data->up->data = data->tilemap;
@@ -27,16 +57,6 @@ static void set_up_top_buttons_functions(simulation_data_t *data)
     data->down->on_click = (void *) lower_tile_height;
     data->bomb->on_click = (void *) bomb_tile;
     data->change_type->on_click = (void *) change_tile_type;
-    ui_button_set_tooltip(data->up,
-        "Raises the height of selected tile by one.\n(Shortcut: R)",
-        data->up->char_size, &sfWhite);
-    ui_button_set_tooltip(data->down,
-        "Lowers the height of selected tile by one.\n(Shortcut: L)",
-        data->up->char_size, &sfWhite);
-    ui_button_set_tooltip(data->change_type,
-        "Changes the type of selected tile.", data->up->char_size, &sfWhite);
-    ui_button_set_tooltip(data->bomb, "Lowers an area like a bomb would.",
-        data->up->char_size, &sfWhite);
 }
 
 static void set_up_top_buttons(engine_t *engine, simulation_data_t *data)
@@ -106,6 +126,8 @@ static void set_up_buttons(engine_t *engine, simulation_data_t *data)
 {
     set_up_top_buttons(engine, data);
     set_up_bottom_buttons(engine, data);
+    set_up_top_tooltips(data);
+    set_up_bottom_tooltips(data);
 }
 
 void simulation_enter(engine_t *engine)

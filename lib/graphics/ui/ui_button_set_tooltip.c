@@ -27,5 +27,5 @@ void ui_button_set_tooltip(ui_button_t *button, const char *text,
     sfText_setPosition(button->tooltip_text,
         (sfVector2f) {sfRectangleShape_getPosition(button->background).x,
             sfRectangleShape_getPosition(button->background).y
-            + (button->char_size * 3)});
+            + (float) (button->char_size * 3)});
 }

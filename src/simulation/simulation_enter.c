@@ -136,7 +136,11 @@ void simulation_enter(engine_t *engine)
 
     if (!data)
         return;
-    data->tilemap =
-        tilemap_create(MAP_DEFAULT_W, MAP_DEFAULT_H, &engine->window_size);
+    if (engine->optional_height != 0 && engine->optional_width != 0)
+        data->tilemap = tilemap_create(engine->optional_width,
+            engine->optional_height, &engine->window_size);
+    else
+        data->tilemap =
+            tilemap_create(MAP_DEFAULT_W, MAP_DEFAULT_H, &engine->window_size);
     set_up_buttons(engine, data);
 }

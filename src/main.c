@@ -62,15 +62,16 @@ int main(int ac, UNUSED char **av, char **env)
         fprintf(stderr, "Error: cannot run in a non graphical environment\n");
         return ERROR;
     }
-    if (ac != 1) {
-        fprintf(stderr, "Too many arguments.\n");
-        return ERROR;
-    }
     if (!engine_init(&engine, WIN_TITLE, &video_mode, false)) {
         engine_destroy(&engine);
         fprintf(stderr, "Error: failed to initialize the engine\n");
         return ERROR;
     }
+    if (ac == 4 && strcmp(av[1], "-s") == 0) {
+        engine.optional_height = atoi(av[2]);
+        engine.optional_width = atoi(av[3]);
+    }
+    printf("%i %i\n", engine.optional_height, engine.optional_width);
     run_game(&engine);
     return SUCCESS;
 }

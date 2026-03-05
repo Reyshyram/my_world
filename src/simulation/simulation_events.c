@@ -10,6 +10,7 @@
 #include "graphics/engine.h"
 
 #include "graphics/ui.h"
+#include "stdio.h"
 #include "simulation.h"
 
 void simulation_event(engine_t *engine, sfEvent *event)
@@ -24,4 +25,12 @@ void simulation_event(engine_t *engine, sfEvent *event)
     ui_button_events(data->bomb, event, engine);
     ui_button_events(data->random, event, engine);
     ui_button_events(data->reset, event, engine);
+    if (event->type == sfEvtKeyPressed) {
+        if (event->key.code == sfKeyL)
+            lower_tile_height(data->tilemap);
+        if (event->key.code == sfKeyR)
+            raise_tile_height(data->tilemap);
+        if (event->key.code == sfKeyT)
+            select_hovered_tile(data->tilemap);
+    }
 }

@@ -28,6 +28,8 @@
     #define CAMERA_SPEED 500
     #define ROTATION_SPEED 1
     #define ZOOM_SPEED 0.5F
+
+    #define BOMB_RANGE 10
 // clang-format on
 
 typedef enum tile_type {
@@ -71,6 +73,8 @@ typedef struct tilemap {
     bool is_tile_hovered;
     size_t hover_x;
     size_t hover_y;
+    int clicked_x;
+    int clicked_y;
 } tilemap_t;
 
 static const sfColor HOVER_COLOR = {255, 255, 255, 80};
@@ -108,5 +112,11 @@ void tilemap_draw(const tilemap_t *tilemap, sfRenderWindow *window);
 void randomize_tile_map(tilemap_t *map);
 tile_type_t get_tile_type(int height);
 void tilemap_update_hover(tilemap_t *tilemap, sfRenderWindow *window);
+void lower_tile_height(tilemap_t *map);
+void raise_tile_height(tilemap_t *map);
+void select_hovered_tile(tilemap_t *map);
+int check_amount_tiles_nearby(size_t pos, tilemap_t *map);
+void bomb_tile(tilemap_t *map);
+
 
 #endif /* !TILEMAP_H_ */

@@ -16,6 +16,17 @@
 #include "simulation.h"
 #include "tilemap.h"
 
+static void set_up_top_buttons_functions(simulation_data_t *data)
+{
+    data->up->data = data->tilemap;
+    data->down->data = data->tilemap;
+    data->bomb->data = data->tilemap;
+    data->change_type->data = data->tilemap;
+    data->up->on_click = (void *) raise_tile_height;
+    data->down->on_click = (void *) lower_tile_height;
+    data->bomb->on_click = (void *) bomb_tile;
+}
+
 static void set_up_top_buttons(engine_t *engine, simulation_data_t *data)
 {
     data->up = ui_button_create(engine, UI_BUTTON_TEXTURE,
@@ -30,12 +41,13 @@ static void set_up_top_buttons(engine_t *engine, simulation_data_t *data)
     data->bomb = ui_button_create(engine, UI_BUTTON_TEXTURE,
         &(sfVector2f) {505, 45}, &(sfVector2f) {BUTTON_WITDH, BUTTON_HEIGHT});
     ui_button_set_text(data->bomb, "BOMB", 24, &sfWhite);
+    set_up_top_buttons_functions(data);
 }
 
 static void reset_tilemap(tilemap_t *map)
 {
     for (size_t i = 0; i < map->height * map->width; i++) {
-        map->heights[i] = MIN_HEIGHT;
+        map->heights[i] = MAX_HEIGHT / 2;
         map->types[i] = TILE_TYPE_GRASS;
     }
     tilemap_calculate_vertices(map);

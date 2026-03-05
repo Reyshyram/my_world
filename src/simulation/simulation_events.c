@@ -27,6 +27,8 @@ static void handle_tilemap_functions(simulation_data_t *data, sfEvent *event)
             raise_tile_height(data->tilemap);
         if (event->key.code == sfKeyT)
             change_tile_type(data->tilemap);
+        if (event->key.code == sfKeyB)
+            bomb_tile(data->tilemap);
     }
 }
 

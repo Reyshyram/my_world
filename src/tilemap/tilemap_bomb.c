@@ -5,9 +5,10 @@
 ** simulates a bomb at the selected tile
 */
 
+#include <stddef.h>
+
 #include "tilemap.h"
 
-#include "stdio.h"
 /*     if (pos > map->width)
         div += 1;
     if (pos < (map->height - 1) * map->width)
@@ -22,7 +23,6 @@ static void lower_tile_at_pos(tilemap_t *map, size_t x_pos, size_t y_pos,
     size_t clicked_pos)
 {
     map->heights[clicked_pos + x_pos + y_pos * map->width] -= 1;
-    tilemap_calculate_vertices(map);
 }
 
 static void bomb_check_loop(tilemap_t *map, int x_pos, int y_pos, int range)
@@ -44,7 +44,6 @@ static void lower_nearby_tiles(tilemap_t *map, int range)
             bomb_check_loop(map, i, j, range);
         }
     }
-    tilemap_calculate_vertices(map);
 }
 
 void bomb_tile(tilemap_t *map)

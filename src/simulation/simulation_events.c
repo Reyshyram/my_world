@@ -6,12 +6,29 @@
 */
 
 #include <SFML/Window/Event.h>
+#include <SFML/Window/Keyboard.h>
+#include <SFML/Window/Mouse.h>
 
 #include "graphics/engine.h"
-
 #include "graphics/ui.h"
-#include "stdio.h"
+
 #include "simulation.h"
+#include "tilemap.h"
+
+static void handle_tilemap_functions(simulation_data_t *data, sfEvent *event)
+{
+    if (event->type == sfEvtMouseButtonPressed
+        && event->mouseButton.button == sfMouseRight)
+        select_hovered_tile(data->tilemap);
+    if (event->type == sfEvtKeyPressed) {
+        if (event->key.code == sfKeyL)
+            lower_tile_height(data->tilemap);
+        if (event->key.code == sfKeyR)
+            raise_tile_height(data->tilemap);
+        if (event->key.code == sfKeyT)
+            change_tile_type(data->tilemap);
+    }
+}
 
 void simulation_event(engine_t *engine, sfEvent *event)
 {
@@ -25,12 +42,5 @@ void simulation_event(engine_t *engine, sfEvent *event)
     ui_button_events(data->bomb, event, engine);
     ui_button_events(data->random, event, engine);
     ui_button_events(data->reset, event, engine);
-    if (event->type == sfEvtKeyPressed) {
-        if (event->key.code == sfKeyL)
-            lower_tile_height(data->tilemap);
-        if (event->key.code == sfKeyR)
-            raise_tile_height(data->tilemap);
-        if (event->key.code == sfKeyT)
-            select_hovered_tile(data->tilemap);
-    }
+    handle_tilemap_functions(data, event);
 }

@@ -21,6 +21,8 @@ void tilemap_destroy(tilemap_t *tilemap)
         sfVertexArray_destroy(tilemap->vertices);
     if (tilemap->hover_vertices)
         sfVertexArray_destroy(tilemap->hover_vertices);
+    if (tilemap->selected_vertices)
+        sfVertexArray_destroy(tilemap->selected_vertices);
     if (tilemap->view)
         sfView_destroy(tilemap->view);
     free(tilemap);

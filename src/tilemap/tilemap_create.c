@@ -45,13 +45,16 @@ static bool tilemap_initialize(tilemap_t *tilemap, sfVector2u *window_size)
     tilemap->types = malloc(sizeof(tile_type_t) * nb_tiles);
     tilemap->vertices = sfVertexArray_create();
     tilemap->hover_vertices = sfVertexArray_create();
+    tilemap->selected_vertices = sfVertexArray_create();
     tilemap->view = sfView_create();
     if (!tilemap->heights || !tilemap->types || !tilemap->vertices
-        || !tilemap->view || !tilemap->hover_vertices)
+        || !tilemap->view || !tilemap->hover_vertices
+        || !tilemap->selected_vertices)
         return false;
     init_tile_data(tilemap, nb_tiles);
     sfVertexArray_setPrimitiveType(tilemap->vertices, sfQuads);
     sfVertexArray_setPrimitiveType(tilemap->hover_vertices, sfQuads);
+    sfVertexArray_setPrimitiveType(tilemap->selected_vertices, sfLineStrip);
     sfView_setSize(tilemap->view, TOV2F(*window_size));
     sfView_setCenter(tilemap->view,
         (sfVector2f) {0.0F, -(float) MAX_HEIGHT * TILE_HEIGHT / 2.0F});

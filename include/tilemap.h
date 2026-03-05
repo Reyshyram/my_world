@@ -68,6 +68,7 @@ typedef struct tilemap {
     tile_type_t *types;
     sfVertexArray *vertices;
     sfVertexArray *hover_vertices;
+    sfVertexArray *selected_vertices;
     sfView *view;
     float rotation_rad;
     bool is_tile_hovered;
@@ -78,6 +79,7 @@ typedef struct tilemap {
 } tilemap_t;
 
 static const sfColor HOVER_COLOR = {255, 255, 255, 80};
+static const sfColor SELECTED_COLOR = {255, 80, 10, 255};
 
 typedef struct {
     sfVertexArray *vertices;
@@ -115,8 +117,9 @@ void tilemap_update_hover(tilemap_t *tilemap, sfRenderWindow *window);
 void lower_tile_height(tilemap_t *map);
 void raise_tile_height(tilemap_t *map);
 void select_hovered_tile(tilemap_t *map);
+void update_selected_vertices(tilemap_t *map);
+void change_tile_type(tilemap_t *map);
 int check_amount_tiles_nearby(size_t pos, tilemap_t *map);
 void bomb_tile(tilemap_t *map);
-
 
 #endif /* !TILEMAP_H_ */

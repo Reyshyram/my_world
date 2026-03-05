@@ -64,4 +64,5 @@ void tilemap_calculate_vertices(tilemap_t *tilemap)
     for (size_t i = 0; i < tilemap->width * tilemap->height; i++)
         add_tile_vertices(tilemap, &tile_render, &draw_order[i], &view_dir);
     free(draw_order);
+    update_selected_vertices(tilemap);
 }

@@ -25,6 +25,7 @@ static void set_up_top_buttons_functions(simulation_data_t *data)
     data->up->on_click = (void *) raise_tile_height;
     data->down->on_click = (void *) lower_tile_height;
     data->bomb->on_click = (void *) bomb_tile;
+    data->change_type->on_click = (void *) change_tile_type;
 }
 
 static void set_up_top_buttons(engine_t *engine, simulation_data_t *data)

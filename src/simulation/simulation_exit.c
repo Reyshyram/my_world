@@ -28,6 +28,7 @@ void simulation_exit(engine_t *engine)
     ui_button_destroy(data->bomb);
     ui_button_destroy(data->random);
     ui_button_destroy(data->reset);
+    ui_button_destroy(data->save);
     ui_button_destroy(data->strength_minus);
     ui_button_destroy(data->strength_plus);
     if (data->strength_txt)

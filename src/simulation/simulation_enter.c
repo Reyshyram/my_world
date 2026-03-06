@@ -12,8 +12,8 @@
 #include <unistd.h>
 
 #include "graphics/engine.h"
-#include "graphics/ui.h"
 #include "graphics/resources.h"
+#include "graphics/ui.h"
 
 #include "my_world.h"
 #include "simulation.h"
@@ -40,6 +40,8 @@ static void set_up_bottom_tooltips(simulation_data_t *data)
     ui_button_set_bottom_tooltip(data->random, "Randomizes the tilemap.",
         (int) data->up->char_size, &sfWhite);
     ui_button_set_bottom_tooltip(data->reset, "Resets the tilemap.",
+        (int) data->up->char_size, &sfWhite);
+    ui_button_set_bottom_tooltip(data->save, "Save the tilemap. (Shortcut: K)",
         (int) data->up->char_size, &sfWhite);
     ui_button_set_bottom_tooltip(data->strength_minus,
         "Decreases the strength of the tools.\n(The height, bomb radius,...)",
@@ -125,6 +127,11 @@ static void set_up_bottom_buttons(engine_t *engine, simulation_data_t *data)
     ui_button_set_text(data->reset, "RESET", 24, &sfWhite);
     data->reset->data = data->tilemap;
     data->reset->on_click = (void *) reset_tilemap;
+    data->save = ui_button_create(engine, UI_BUTTON_TEXTURE,
+        &(sfVector2f) {365, 685}, &(sfVector2f) {BUTTON_WITDH, BUTTON_HEIGHT});
+    ui_button_set_text(data->save, "SAVE", 24, &sfWhite);
+    data->save->data = data;
+    data->save->on_click = (void *) save_tilemap;
     set_up_strength_ui(engine, data);
 }
 
@@ -144,7 +151,5 @@ void simulation_enter(engine_t *engine)
         return;
     data->tilemap = tilemap_create(data->map_width, data->map_height,
         &engine->window_size);
-    if (access(data->filename, R_OK))
-        load_tilemap(data, data->filename);
     set_up_buttons(engine, data);
 }

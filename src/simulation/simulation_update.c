@@ -106,6 +106,7 @@ void simulation_update(engine_t *engine)
     ui_button_update(engine, data->bomb);
     ui_button_update(engine, data->random);
     ui_button_update(engine, data->reset);
+    ui_button_update(engine, data->save);
     ui_button_update(engine, data->strength_minus);
     ui_button_update(engine, data->strength_plus);
     update_strength_txt(data);

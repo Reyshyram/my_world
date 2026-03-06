@@ -20,6 +20,7 @@ static void draw_buttons(engine_t *engine, simulation_data_t *data)
     ui_button_draw(engine, data->bomb);
     ui_button_draw(engine, data->random);
     ui_button_draw(engine, data->reset);
+    ui_button_draw(engine, data->save);
     ui_button_draw(engine, data->strength_minus);
     ui_button_draw(engine, data->strength_plus);
 }

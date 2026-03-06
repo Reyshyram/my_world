@@ -26,12 +26,11 @@ struct args {
 
 static bool is_savefile_correct(char *filename)
 {
-    if (!filename)
+    if (!filename || strlen(filename) < 7
+        || strcmp(filename + (strlen(filename) - 7), ".legend") != 0) {
+        fprintf(stderr, "Invalid file name. Must end with .legend\n");
         return false;
-    if (strlen(filename) < 7)
-        return false;
-    if (strcmp(filename + (strlen(filename) - 7), ".legend") != 0)
-        return false;
+    }
     return true;
 }
 
@@ -116,7 +115,7 @@ int main(int ac, char **av, char **env)
     if (parse_status != SUCCESS)
         return (parse_status == 1) ? SUCCESS : ERROR;
     if (!is_savefile_correct(args.filename))
-        args.filename = NULL;
+        return ERROR;
     if (!is_graphical(env)) {
         fprintf(stderr, "Error: cannot run in a non graphical environment\n");
         return ERROR;

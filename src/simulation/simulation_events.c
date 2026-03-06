@@ -30,10 +30,8 @@ static void handle_tilemap_functions(simulation_data_t *data, sfEvent *event)
             change_tile_type(data->tilemap);
         if (event->key.code == sfKeyB)
             bomb_tile(data->tilemap);
-        if (event->key.code == sfKeyJ)
-            load_tilemap(data, data->filename);
         if (event->key.code == sfKeyK)
-            save_tilemap(data->tilemap, data->filename);
+            save_tilemap(data);
     }
 }
 
@@ -49,6 +47,7 @@ void simulation_event(engine_t *engine, sfEvent *event)
     ui_button_events(data->bomb, event, engine);
     ui_button_events(data->random, event, engine);
     ui_button_events(data->reset, event, engine);
+    ui_button_events(data->save, event, engine);
     ui_button_events(data->strength_minus, event, engine);
     ui_button_events(data->strength_plus, event, engine);
     handle_tilemap_functions(data, event);

@@ -17,7 +17,7 @@
     #include "tilemap.h"
 // clang-format on
 
-typedef struct {
+typedef struct simulation_s {
     tilemap_t *tilemap;
     unsigned int map_width;
     unsigned int map_height;

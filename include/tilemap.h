@@ -128,5 +128,7 @@ int check_amount_tiles_nearby(size_t pos, tilemap_t *map);
 void bomb_tile(tilemap_t *map);
 
 void save_tilemap(tilemap_t *map, char *filename);
+typedef struct simulation_s simulation_data_t;
+void load_tilemap(simulation_data_t *data, char *filename);
 
 #endif /* !TILEMAP_H_ */

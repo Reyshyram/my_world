@@ -5,6 +5,7 @@
 ** Handle events during the simulation
 */
 
+#include <SFML/Graphics/RenderWindow.h>
 #include <SFML/Window/Event.h>
 #include <SFML/Window/Keyboard.h>
 #include <SFML/Window/Mouse.h>
@@ -29,6 +30,10 @@ static void handle_tilemap_functions(simulation_data_t *data, sfEvent *event)
             change_tile_type(data->tilemap);
         if (event->key.code == sfKeyB)
             bomb_tile(data->tilemap);
+        if (event->key.code == sfKeyJ)
+            load_tilemap(data, data->filename);
+        if (event->key.code == sfKeyK)
+            save_tilemap(data->tilemap, data->filename);
     }
 }
 
@@ -47,4 +52,6 @@ void simulation_event(engine_t *engine, sfEvent *event)
     ui_button_events(data->strength_minus, event, engine);
     ui_button_events(data->strength_plus, event, engine);
     handle_tilemap_functions(data, event);
+    if (event->type == sfEvtKeyPressed && event->key.code == sfKeyEscape)
+        sfRenderWindow_close(engine->window);
 }

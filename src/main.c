@@ -16,6 +16,7 @@
 
 #include "my_world.h"
 #include "simulation.h"
+#include "tilemap.h"
 
 struct args {
     int width;
@@ -98,7 +99,7 @@ int main(int ac, char **av, char **env)
 {
     engine_t engine = {0};
     sfVideoMode video_mode = {WIN_WIDTH, WIN_HEIGHT, 32};
-    struct args args = {MAP_DEFAULT_W, MAP_DEFAULT_H, NULL};
+    struct args args = {MAP_DEFAULT_W, MAP_DEFAULT_H, "map.legend"};
     int parse_status = parse_args(ac, av, &args);
 
     if (parse_status != SUCCESS)

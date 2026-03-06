@@ -9,6 +9,7 @@
 #include <SFML/Graphics/Text.h>
 #include <SFML/System/Vector2.h>
 #include <stddef.h>
+#include <unistd.h>
 
 #include "graphics/engine.h"
 #include "graphics/ui.h"
@@ -142,5 +143,7 @@ void simulation_enter(engine_t *engine)
         return;
     data->tilemap = tilemap_create(data->map_width, data->map_height,
         &engine->window_size);
+    if (access(data->filename, R_OK))
+        load_tilemap(data, data->filename);
     set_up_buttons(engine, data);
 }

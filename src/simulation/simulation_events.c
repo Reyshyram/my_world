@@ -32,6 +32,10 @@ static void handle_tilemap_functions(simulation_data_t *data, sfEvent *event)
             bomb_tile(data->tilemap);
         if (event->key.code == sfKeyK)
             save_tilemap(data);
+        if (event->key.code == sfKeyAdd)
+            increase_tool_strength(data->tilemap);
+        if (event->key.code == sfKeySubtract)
+            decrease_tool_strength(data->tilemap);
     }
 }
 

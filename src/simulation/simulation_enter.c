@@ -44,12 +44,12 @@ static void set_up_bottom_tooltips(simulation_data_t *data)
     ui_button_set_bottom_tooltip(data->save, "Save the tilemap. (Shortcut: K)",
         (int) data->up->char_size, &sfWhite);
     ui_button_set_bottom_tooltip(data->strength_minus,
-        "Decreases the strength of the tools.\n(The height, bomb radius,...)",
+        "Decreases the strength of the tools.\n(Shortcut: -)",
         (int) data->up->char_size, &sfWhite);
     sfText_setPosition(data->strength_minus->tooltip_text,
         (sfVector2f) {950, 625});
     ui_button_set_bottom_tooltip(data->strength_plus,
-        "Increases the strength of the tools.\n(The height, bomb radius,...)",
+        "Increases the strength of the tools.\n(Shortcut: +)",
         (int) data->up->char_size, &sfWhite);
     sfText_setPosition(data->strength_plus->tooltip_text,
         (sfVector2f) {950, 625});

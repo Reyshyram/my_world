@@ -23,6 +23,8 @@
     #define BUTTON_HEIGHT 56
     #define UI_BUTTON_TEXTURE "assets/sprites/ui/button.png"
 
+    #define BACKGROUND_PATH SPRITES_PATH "background.png"
+
     #define BOMB_SOUND SFXS_PATHS "bomb.wav"
     #define LOWER_SOUND SFXS_PATHS "lower.mp3"
     #define RAISE_SOUND SFXS_PATHS "raise.mp3"

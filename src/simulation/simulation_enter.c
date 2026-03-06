@@ -7,6 +7,7 @@
 
 #include <SFML/Audio/Sound.h>
 #include <SFML/Graphics/Color.h>
+#include <SFML/Graphics/Sprite.h>
 #include <SFML/Graphics/Text.h>
 #include <SFML/System/Vector2.h>
 #include <stddef.h>
@@ -153,4 +154,7 @@ void simulation_enter(engine_t *engine)
     data->tilemap = tilemap_create(data->map_width, data->map_height,
         &engine->window_size, engine->resources);
     set_up_buttons(engine, data);
+    data->background = sfSprite_create();
+    sfSprite_setTexture(data->background,
+        resources_load_texture(engine->resources, BACKGROUND_PATH), true);
 }

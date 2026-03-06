@@ -31,6 +31,7 @@ void simulation_draw(engine_t *engine)
 
     if (!data)
         return;
+    sfRenderWindow_drawSprite(engine->window, data->background, nullptr);
     if (data->tilemap)
         tilemap_draw(data->tilemap, engine->window);
     draw_buttons(engine, data);

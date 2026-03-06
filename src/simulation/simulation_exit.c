@@ -5,6 +5,7 @@
 ** Exit the simulation scene
 */
 
+#include <SFML/Graphics/Sprite.h>
 #include <SFML/Graphics/Text.h>
 #include <stdlib.h>
 
@@ -33,5 +34,6 @@ void simulation_exit(engine_t *engine)
     ui_button_destroy(data->strength_plus);
     if (data->strength_txt)
         sfText_destroy(data->strength_txt);
+    sfSprite_destroy(data->background);
     free(data);
 }

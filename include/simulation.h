@@ -22,6 +22,7 @@ typedef struct simulation_s {
     unsigned int map_width;
     unsigned int map_height;
     char *filename;
+    sfSprite *background;
     ui_button_t *up;
     ui_button_t *down;
     ui_button_t *change_type;

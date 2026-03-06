@@ -5,8 +5,12 @@
 ** Change the tile type
 */
 
+#include <SFML/Audio/Sound.h>
 #include <stddef.h>
 
+#include "graphics/resources.h"
+
+#include "my_world.h"
 #include "tilemap.h"
 
 void change_tile_type(tilemap_t *map)
@@ -17,4 +21,5 @@ void change_tile_type(tilemap_t *map)
         return;
     map->types[position] = (map->types[position] + 1) % TILE_TYPE_COUNT;
     tilemap_calculate_vertices(map);
+    sfSound_play(resources_load_sound(map->resources, TYPE_SOUND));
 }

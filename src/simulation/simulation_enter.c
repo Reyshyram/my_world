@@ -5,11 +5,11 @@
 ** Initialize the simulation scene
 */
 
+#include <SFML/Audio/Sound.h>
 #include <SFML/Graphics/Color.h>
 #include <SFML/Graphics/Text.h>
 #include <SFML/System/Vector2.h>
 #include <stddef.h>
-#include <unistd.h>
 
 #include "graphics/engine.h"
 #include "graphics/resources.h"
@@ -91,6 +91,7 @@ static void reset_tilemap(tilemap_t *map)
         map->types[i] = TILE_TYPE_GRASS;
     }
     tilemap_calculate_vertices(map);
+    sfSound_play(resources_load_sound(map->resources, RESET_SOUND));
 }
 
 static void set_up_strength_ui(engine_t *engine, simulation_data_t *data)
@@ -150,6 +151,6 @@ void simulation_enter(engine_t *engine)
     if (!data)
         return;
     data->tilemap = tilemap_create(data->map_width, data->map_height,
-        &engine->window_size);
+        &engine->window_size, engine->resources);
     set_up_buttons(engine, data);
 }

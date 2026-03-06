@@ -5,8 +5,12 @@
 ** simulates a bomb at the selected tile
 */
 
+#include <SFML/Audio/Sound.h>
 #include <stddef.h>
 
+#include "graphics/resources.h"
+
+#include "my_world.h"
 #include "tilemap.h"
 
 /*     if (pos > map->width)
@@ -64,4 +68,5 @@ void bomb_tile(tilemap_t *map)
         lower_nearby_tiles(map, i);
     }
     tilemap_calculate_vertices(map);
+    sfSound_play(resources_load_sound(map->resources, BOMB_SOUND));
 }

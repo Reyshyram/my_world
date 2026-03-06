@@ -9,6 +9,7 @@
 // clang-format off
     #define TILEMAP_H_
 
+    #include "graphics/resources.h"
     #include <SFML/Graphics/RenderWindow.h>
     #include <SFML/Graphics/Types.h>
     #include <SFML/System/Vector2.h>
@@ -79,6 +80,7 @@ typedef struct tilemap {
     int clicked_x;
     int clicked_y;
     size_t tool_strength;
+    resources_t *resources;
 } tilemap_t;
 
 static const sfColor HOVER_COLOR = {255, 255, 255, 80};
@@ -98,8 +100,8 @@ typedef struct {
     float order;
 } draw_order_t;
 
-tilemap_t *tilemap_create(size_t width, size_t height,
-    sfVector2u *window_size);
+tilemap_t *tilemap_create(size_t width, size_t height, sfVector2u *window_size,
+    resources_t *resources);
 void tilemap_destroy(tilemap_t *tilemap);
 void init_tile_data(tilemap_t *tilemap, size_t nb_tiles);
 

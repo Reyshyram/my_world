@@ -13,6 +13,7 @@
 #include <string.h>
 
 #include "graphics/engine.h"
+#include "graphics/resources.h"
 
 #include "tilemap.h"
 
@@ -61,7 +62,8 @@ static bool tilemap_initialize(tilemap_t *tilemap, sfVector2u *window_size)
     return true;
 }
 
-tilemap_t *tilemap_create(size_t width, size_t height, sfVector2u *window_size)
+tilemap_t *tilemap_create(size_t width, size_t height, sfVector2u *window_size,
+    resources_t *resources)
 {
     tilemap_t *tilemap = malloc(sizeof(*tilemap));
 
@@ -70,6 +72,7 @@ tilemap_t *tilemap_create(size_t width, size_t height, sfVector2u *window_size)
     memset(tilemap, 0, sizeof(*tilemap));
     tilemap->width = width;
     tilemap->height = height;
+    tilemap->resources = resources;
     if (!tilemap_initialize(tilemap, window_size)) {
         tilemap_destroy(tilemap);
         return nullptr;

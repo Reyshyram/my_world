@@ -5,8 +5,13 @@
 ** randomizes each tile's height
 */
 
-#include "tilemap.h"
+#include <SFML/Audio/Sound.h>
 #include <stdlib.h>
+
+#include "graphics/resources.h"
+
+#include "my_world.h"
+#include "tilemap.h"
 
 tile_type_t get_tile_type(int height)
 {
@@ -90,4 +95,5 @@ void randomize_tile_map(tilemap_t *map)
     for (size_t i = 0; i < map->width * map->height; i++)
         map->types[i] = get_tile_type(height_map[i]);
     tilemap_calculate_vertices(map);
+    sfSound_play(resources_load_sound(map->resources, RANDOM_SOUND));
 }

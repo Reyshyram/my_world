@@ -5,8 +5,12 @@
 ** Save the tilemap
 */
 
+#include <SFML/Audio/Sound.h>
 #include <stdio.h>
 
+#include "graphics/resources.h"
+
+#include "my_world.h"
 #include "simulation.h"
 #include "tilemap.h"
 
@@ -28,4 +32,5 @@ void save_tilemap(simulation_data_t *data)
         fprintf(f, "\n");
     }
     fclose(f);
+    sfSound_play(resources_load_sound(data->tilemap->resources, SAVE_SOUND));
 }

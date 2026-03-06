@@ -5,8 +5,12 @@
 ** hold the functions for both buttons up and down
 */
 
+#include <SFML/Audio/Sound.h>
 #include <stddef.h>
 
+#include "graphics/resources.h"
+
+#include "my_world.h"
 #include "tilemap.h"
 
 void lower_tile_height(tilemap_t *map)
@@ -19,6 +23,7 @@ void lower_tile_height(tilemap_t *map)
     if (map->heights[position] <= MIN_HEIGHT)
         map->heights[position] = MIN_HEIGHT;
     tilemap_calculate_vertices(map);
+    sfSound_play(resources_load_sound(map->resources, LOWER_SOUND));
 }
 
 void raise_tile_height(tilemap_t *map)
@@ -31,16 +36,19 @@ void raise_tile_height(tilemap_t *map)
     if (map->heights[position] >= MAX_HEIGHT)
         map->heights[position] = MAX_HEIGHT;
     tilemap_calculate_vertices(map);
+    sfSound_play(resources_load_sound(map->resources, RAISE_SOUND));
 }
 
 void increase_tool_strength(tilemap_t *map)
 {
     if (map->tool_strength < MAX_TOOL_STRENGTH)
         map->tool_strength++;
+    sfSound_play(resources_load_sound(map->resources, RAISE_SOUND));
 }
 
 void decrease_tool_strength(tilemap_t *map)
 {
     if (map->tool_strength > MIN_TOOL_STRENGTH)
         map->tool_strength--;
+    sfSound_play(resources_load_sound(map->resources, LOWER_SOUND));
 }

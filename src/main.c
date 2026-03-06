@@ -24,6 +24,17 @@ struct args {
     char *filename;
 };
 
+static bool is_savefile_correct(char *filename)
+{
+    if (!filename)
+        return false;
+    if (strlen(filename) < 7)
+        return false;
+    if (strcmp(filename + (strlen(filename) - 7), ".legend") != 0)
+        return false;
+    return true;
+}
+
 static void run_game(engine_t *engine, int width, int height, char *filename)
 {
     scene_t *simulation_scene = simulation_create(width, height, filename);
@@ -64,7 +75,7 @@ static int parse_size_args(int ac, char **av, int *i, struct args *args)
         if (args->width < 8 || args->width > 256 || args->height < 8
             || args->height > 256) {
             fprintf(stderr,
-                "Error: width and height must be between 8 and 256\n");
+                "Error: width and length must be between 8 and 256\n");
             return ERROR;
         }
         return SUCCESS;
@@ -104,6 +115,8 @@ int main(int ac, char **av, char **env)
 
     if (parse_status != SUCCESS)
         return (parse_status == 1) ? SUCCESS : ERROR;
+    if (!is_savefile_correct(args.filename))
+        args.filename = NULL;
     if (!is_graphical(env)) {
         fprintf(stderr, "Error: cannot run in a non graphical environment\n");
         return ERROR;

@@ -23,6 +23,7 @@ struct ui_button {
     sfText *text;
     sfVector2f scale;
     sfText *tooltip_text;
+    sfSound *on_click_sound;
     unsigned int char_size;
     bool hovered;
     void (*on_click)(void *);

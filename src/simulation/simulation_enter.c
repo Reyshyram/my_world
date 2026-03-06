@@ -13,6 +13,7 @@
 
 #include "graphics/engine.h"
 #include "graphics/ui.h"
+#include "graphics/resources.h"
 
 #include "my_world.h"
 #include "simulation.h"

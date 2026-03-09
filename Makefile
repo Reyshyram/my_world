@@ -6,7 +6,7 @@
 ##
 
 NAME			:= my_world
-CC				:= epiclang
+CC				:= gcc
 
 # --- Folders
 SRC_DIR			:= src
